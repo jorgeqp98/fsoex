@@ -1,0 +1,19 @@
+title ex 0.6
+
+note left of browser:
+The js code fetched from the server 
+instructs the browser to use an event 
+handler and prevents default handling 
+to take place, preventing a redirect.
+end note
+
+note right of browser:
+Event handler:
+    -Creates new note and
+    adds it to notes list
+    -Rerenders note list
+    Sends note to server
+end note
+
+browser->server:HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server->browser:Status code: 201 created - does not ask for a redirect

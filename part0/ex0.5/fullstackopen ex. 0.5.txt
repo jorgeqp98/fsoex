@@ -1,0 +1,32 @@
+title ex. 0.5
+
+browser->server:HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+server-->browser:HTML code
+note left of browser:
+Browser excecutes HTML and
+it performs the other HTTP GET 
+requests specified in the HTML
+code links (stylesheet and js
+script)
+end note
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: CSS stylesheet (main.css)
+browser->server: HTTP GET  https://fullstack-exampleapp.herokuapp.com/spa.js
+server-->browser: JavaScript code (spa.js)
+
+note right of browser:
+The browser executes the code
+and the code makes another 
+HTTP GET request to fetch the
+JSON data.
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server-->browser: JSON data (data.json)
+
+note left of browser:
+The browser executes an event handler
+that uses the DOM-API to render the 
+notes to the page.
+end note
+
