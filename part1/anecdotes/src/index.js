@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom'
 const App = (props) => {
     const [selected, setSelected] = useState(0)
 
-    const [statesList, setStatesList] = useState([0, 0, 0, 0, 0, 0])
+    const [statesList, setStatesList] = useState(new Array(props.anecdotes.length).fill(0))
 
-    const handlePickRandom = () => () => setSelected( Math.round( Math.random() * 5 ));
+    const handlePickRandom = () => setSelected( Math.floor( Math.random() * anecdotes.length))
 
-    const handleVote = () => () => {
+    const handleVote = () => {
         const copyStatesList = [...statesList]
-        copyStatesList[selected] += 1;
+        copyStatesList[selected] += 1
         setStatesList(copyStatesList)
     }
 
@@ -24,13 +24,13 @@ const App = (props) => {
                 <p>This anecdote has {statesList[selected]} votes</p>
             </div>
             <div>
-                <button onClick={handlePickRandom()} > Another anecdote </button>
-                <button onClick={handleVote()}> Vote </button>
+                <button onClick={() => handlePickRandom()} > Another anecdote </button>
+                <button onClick={() => handleVote()}> Vote </button>
             </div>
             <div>
                 <h2>Most voted anecdote:</h2>
                 {props.anecdotes[maxVotedIndex]}
-                <p>It has {statesList[maxVoted]} votes</p>
+                <p>It has {statesList[maxVotedIndex]} votes</p>
             </div>
         </>
     )
