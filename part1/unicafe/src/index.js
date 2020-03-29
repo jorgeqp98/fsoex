@@ -59,7 +59,7 @@ const App = () => {
  
   const totalClicks =  counterBad + counterNeutral + counterGood
   const averageClicks  =  counterAvr / totalClicks
-  const goodPercentage = counterGood / totalClicks * 100 + "%";
+  const goodPercentage = counterGood / totalClicks * 100 + "%"
   
 
   const allCounters = {
