@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AddNewSection from "./Components/AddNewSection"
 import NumbersSection from "./Components/NumbersSection"
 import SearchSection from "./Components/SearchSection"
+
+import axios from "axios"
 
 
 
@@ -11,13 +13,24 @@ import SearchSection from "./Components/SearchSection"
 
 
 const App = () => {
-  const [ persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: "654-738-745" },
-    { name: 'Ada Lovelace', number: '39-44-5323523' },
-    { name: 'Dan Abramov', number: '12-43-234345' },
-    { name: 'Mary Poppendieck', number: '39-23-6423122' }
-  ]) 
   
+  const [persons, setPersons] = useState([])
+
+  const handleFetch = () => {
+    console.log("start fetching")
+    axios
+      .get("http://localhost:3001/persons")
+      .then(response => {
+        console.log("promise fulfilled")
+        setPersons(response.data)
+      })
+    }
+
+  useEffect(handleFetch, [])
+
+  
+
+
   // SEARCHSECTION:
 
   var [matchingPersons, setMatchingPersons] = useState([])
